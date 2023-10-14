@@ -1,0 +1,77 @@
+.__GAME__{
+	display: flex;
+}
+.__GAME__ > *{
+	height: 100vh;
+}
+
+.__GAME__ button[selectedTool="dig"]{
+	color: var(--primary10);
+	background-color: var(--blueBase);
+	border-color: var(--borderBlueTop) var(--borderBlueRight) var(--borderBlueBottom) var(--borderBlueLeft);
+}
+.__GAME__ button[selectedTool="flag"]{
+	color: var(--primary10);
+	background-color: var(--redBase);
+	border-color: var(--borderRedTop) var(--borderRedRight) var(--borderRedBottom) var(--borderRedLeft);
+}
+
+.__BOARD__{
+	border-collapse: collapse;
+}
+.__BOARD__ .__TILE__{
+	position: relative;
+	transition: .2s all;
+	font-size: 1.5rem;
+	aspect-ratio: 1 / 1;
+	border-style: solid;
+	border-width: .35em;
+	width: 3rem;
+	height: 3rem;
+}
+.__BOARD__ button:active{
+	transform: scale(.95);
+}
+
+.__BOARD__ .basic{
+	background-color: var(--blankBase);
+	border-color: var(--borderBlankTop) var(--borderBlankRight) var(--borderBlankBottom) var(--borderBlankLeft);
+}
+
+.__BOARD__ .revealed{
+	color: var(--primary10);
+	background-color: var(--blueBase);
+	border-color: var(--borderBlueTop) var(--borderBlueRight) var(--borderBlueBottom) var(--borderBlueLeft);
+}
+
+.__BOARD__ .flagged{
+	background-color: var(--blankBase);
+	border-color: var(--borderRedTop) var(--borderRedRight) var(--borderRedBottom) var(--borderRedLeft);
+}
+.__BOARD__ .flaggedIncorrectShow{
+	background-color: var(--blankBase);
+	border-color: var(--borderRedTop) var(--borderRedRight) var(--borderRedBottom) var(--borderRedLeft);
+}
+
+.__BOARD__ .bombShow{
+	color: var(--primary10);
+	background-color: var(--redBase);
+	border-color: var(--borderRedTop) var(--borderRedRight) var(--borderRedBottom) var(--borderRedLeft);
+}
+
+.__BOARD__[selectedTool="dig"][state="Ongoing"] .hoverables:hover{
+	border-color: var(--borderBlueTop) var(--borderBlueRight) var(--borderBlueBottom) var(--borderBlueLeft);
+}
+.__BOARD__[selectedTool="flag"][state="Ongoing"] .hoverables:hover{
+	border-color: var(--borderRedTop) var(--borderRedRight) var(--borderRedBottom) var(--borderRedLeft);
+}
+.__BOARD__:not([state="Ongoing"]) .__TILE__{
+	pointer-events: none;
+}
+
+.__BOARD__ .DEBUG_1{
+	background-color: #d5d;
+}
+.__BOARD__ .DEBUG_2{
+	background-color: #5d5;
+}

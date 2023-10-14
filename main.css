@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css?family=Silkscreen");
+:root{
+	--primary10: #dfdfdf;
+	--primary20: #cfcfcf;
+
+	/*Top > Right > Bottom > Left*/
+	--blankBase: #ddd;
+	--borderBlankTop: #fff;
+	--borderBlankRight: #ccc;
+	--borderBlankBottom: #bbb;
+	--borderBlankLeft: #eee;
+
+	--blueBase: #55d;
+	--borderBlueTop: #77f;
+	--borderBlueRight: #44c;
+	--borderBlueBottom: #33b;
+	--borderBlueLeft: #66e;
+
+	--redBase: #d55;
+	--borderRedTop: #f77;
+	--borderRedRight: #c44;
+	--borderRedBottom: #b33;
+	--borderRedLeft: #e66;
+	
+	--shadow: 0 0 .5em 0 black;
+}
+::selection{
+	background-color: transparent;
+	color: var(--redBase);
+}
+*{
+	margin: 0 auto;
+	box-sizing: border-box;
+	font-family: "Silkscreen";
+}
+html, body{
+	height: 100vh;
+}
+body{
+	background-color: var(--primary10);
+	background-image: 
+		linear-gradient(0deg, var(--blankBase) 80%, transparent 80%),
+		linear-gradient(90deg, var(--blankBase) 80%, var(--borderBlankBottom) 80%);
+	background-size: 2rem 2rem, 2rem 2rem;
+}
+.section, .panel, .board{
+	background-color: var(--blankBase);
+	border-style: solid;
+	border-width: 1em;
+	border-color: var(--borderBlankTop) var(--borderBlankRight) var(--borderBlankBottom) var(--borderBlankLeft);
+	padding: 3em 3em;
+	display: flex;
+	flex-direction: column;
+	gap: 5em;
+}
+.section{
+	max-width: 1200px;
+}
+.panel{
+	width: 20%;
+}
+.board{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+}
+
+.notification{
+	z-index: 10;
+	background-color: var(--blankBase);
+	border-style: solid;
+	border-width: 1em;
+	border-color: var(--borderBlankTop) var(--borderBlankRight) var(--borderBlankBottom) var(--borderBlankLeft);
+	padding: 1em 1em;
+}
+h1{
+	--indent: .25em;
+	position: relative;
+	font-size: 5rem;
+	padding: .5em 2em;
+	color: var(--blankBase);
+	clip-path: polygon(0% var(--indent), var(--indent) var(--indent), var(--indent) 0%, calc(100% - var(--indent)) 0%, calc(100% - var(--indent)) var(--indent), 100% var(--indent), 100% calc(100% - var(--indent)), calc(100% - var(--indent)) calc(100% - var(--indent)), calc(100% - var(--indent)) 100%, var(--indent) 100%, var(--indent) calc(100% - var(--indent)), 0% calc(100% - var(--indent)));
+}
+h3{
+	text-align: center;
+	--indent: .25em;
+	font-size: 1.5rem;
+	padding: .5em 2em;
+	color: var(--blankBase);
+	clip-path: polygon(0% var(--indent), var(--indent) var(--indent), var(--indent) 0%, calc(100% - var(--indent)) 0%, calc(100% - var(--indent)) var(--indent), 100% var(--indent), 100% calc(100% - var(--indent)), calc(100% - var(--indent)) calc(100% - var(--indent)), calc(100% - var(--indent)) 100%, var(--indent) 100%, var(--indent) calc(100% - var(--indent)), 0% calc(100% - var(--indent)));
+}
+
+h1, h3.win{
+	background-image: linear-gradient(45deg, var(--borderBlueRight) 50%, var(--borderBlueBottom) 50%);
+	text-shadow: .05em .05em 0 var(--borderBlueLeft);
+}
+
+h3.failed{
+	background-image: linear-gradient(45deg, var(--borderRedRight) 50%, var(--borderRedBottom) 50%);
+	text-shadow: .05em .05em 0 var(--borderRedLeft);
+}
+h2{
+	background-color: var(--blankBase);
+	border-style: solid;
+	border-width: .5em;
+	border-color: var(--borderBlankTop) var(--borderBlankRight) var(--borderBlankBottom) var(--borderBlankLeft);
+	padding: .25em;
+}
+.__START__{
+	display: flex;
+	flex-direction: column;
+	gap: 2.5em;
+}
+select, button.options{
+	cursor: pointer;
+	background-color: var(--blueBase);
+	color: var(--primary10);
+	padding: .5em 2.5em;
+	font-size: 3rem;
+	outline: none;
+	border: none;
+	transition: .1s transform, .25s box-shadow;
+	appearance: none;
+	width: max-content;
+	border-width: .5em;
+	border-style: solid;
+	border-color: var(--borderBlueTop) var(--borderBlueRight) var(--borderBlueBottom) var(--borderBlueLeft);
+}
+.selection:hover, button.options:hover, .controls:hover{
+	transform: scale(1.0125);
+	box-shadow: var(--shadow);
+}
+.selection{
+	position: relative;
+}
+.selection::after{
+	pointer-events: none;
+	position: absolute;
+	content: "";
+	z-index: 99;
+	background-color: var(--blankBase);
+	inset: 0;
+	right: -20em;
+	width: 3em;
+	height: 3em;
+	margin: auto;
+	clip-path: polygon(50% 100%, 0 50%, 20% 30%, 50% 60%, 80% 30%, 100% 50%);
+}
+.selection:active::after{
+	transform: scale(1.15);
+}
+option{
+	background-color: var(--blankBase);
+	color: var(--blueBase);
+}
+option:last-child{
+	color: var(--borderRedBottom);
+}
+
+.controls{
+	cursor: pointer;
+	padding: .5em 2.5em;
+	font-size: 1.5rem;
+	outline: none;
+	border: none;
+	transition: .1s transform, .25s box-shadow;
+	appearance: none;
+	width: 100%;
+	border-width: .5em;
+	border-style: solid;
+	background-color: var(--blankBase);
+	border-color: var(--borderBlankTop) var(--borderBlankRight) var(--borderBlankBottom) var(--borderBlankLeft);
+}
